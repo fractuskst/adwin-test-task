@@ -1,3 +1,18 @@
+:root {
+  --primary-color: #eab308;
+  --primary-light-color: #fec71c;
+  --primary-dark-color: #cc9500;
+
+  --secondary-color: #2581eb;
+  --secondary-light-color: #439fff;
+  --secondary-dark-color: #0763cd;
+
+  --text-color: #1f2937;
+
+  --white-color: #fff;
+  --black-color: #1e1e1e;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +35,7 @@ body {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--text-color);
 }
 
 ul,
@@ -61,24 +76,24 @@ li {
   font-family: Inter, sans-serif;
   font-size: 15px;
   font-weight: 600;
-  color: #fff;
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .button-primary {
-  background-color: #eab308;
+  background-color: var(--primary-color);
 }
 
 .button-primary:active {
-  background-color: #cc9500;
+  background-color: var(--primary-dark-color);
 }
 
 .button-secondary {
-  background-color: #2581eb;
+  background-color: var(--secondary-color);
 }
 
 .button-secondary:active {
-  background-color: #0763cd;
+  background-color: var(--secondary-dark-color);
 }
 
 .container {
@@ -91,7 +106,7 @@ li {
 .header {
   display: flex;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: var(--white-color);
   padding-top: 5px;
   position: relative;
   z-index: 100;
@@ -127,7 +142,7 @@ li {
   top: 0px;
   left: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--white-color);
   padding: 32px;
   transform: translateY(-100%);
   transition: transform 0.5s ease-in-out;
@@ -158,9 +173,9 @@ li {
   padding-block: 8px;
 }
 
-.menu-list-item.active {
-  color: #2581eb;
-  border-bottom: 2px solid #2581eb;
+.menu-list-item.active a {
+  color: var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 #desktop-callback-button {
@@ -182,6 +197,7 @@ li {
   text-transform: uppercase;
   font-size: 92px;
   line-height: 80%;
+  color: var(--black-color);
 }
 
 .duck {
@@ -206,7 +222,7 @@ li {
   max-width: 315px;
   font-size: 16px;
   font-weight: 400;
-  color: #1f2937;
+  color: var(--text-color);
 }
 
 .duck-list {
@@ -217,17 +233,24 @@ li {
   margin-top: 143px;
 }
 
-.duck-list li {
+.duck-list-item {
   padding-left: 38px;
   min-height: 32px;
   display: flex;
   align-items: center;
   position: relative;
-  color: #1f2937;
+  color: var(--text-color);
   cursor: pointer;
 }
 
-.duck-list li::before {
+.duck-list-item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.duck-list-item a::before {
   content: "";
   position: absolute;
   left: 0;
@@ -237,11 +260,13 @@ li {
   height: 32px;
   background-color: currentColor;
   mask-image: url("/src/assets/arrow.svg");
-  mask-repeat: no-repeat;
-  mask-size: contain;
 }
 
 @media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--secondary-color);
+  }
+
   .cart-icon:hover {
     content: url(/src/assets/cart-hover.svg);
   }
@@ -251,19 +276,19 @@ li {
   }
 
   .button-primary:hover {
-    background-color: #fec71c;
+    background-color: var(--primary-light-color);
   }
 
   .button-secondary:hover {
-    background-color: #439fff;
-  }
-
-  .duck-list li:hover {
-    color: #2581eb;
+    background-color: var(--secondary-light-color);
   }
 
   .menu-list-item:hover {
-    color: #2581eb;
+    color: var(--secondary-color);
+  }
+
+  .duck-list-item:hover {
+    color: var(--secondary-color);
   }
 }
 
@@ -324,10 +349,22 @@ li {
 
   .menu-button {
     all: unset;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  }
+
+  .menu-list-item.button-item {
+    margin-right: 28px;
     cursor: pointer;
+  }
+
+  .menu-list-item.button-item::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    background-color: currentColor;
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+    mask-image: url("/src/assets/arrow-down.svg");
   }
 
   .menu-icon {
