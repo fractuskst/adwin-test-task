@@ -4,12 +4,18 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: Inter, sans-serif;
   font-weight: 400;
   line-height: 20px;
   min-width: 320px;
   height: 100vh;
+  position: relative;
 }
 
 a {
@@ -165,6 +171,76 @@ li {
   align-self: center;
 }
 
+.main {
+  position: relative;
+  margin-top: 46px;
+}
+
+.title {
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 92px;
+  line-height: 80%;
+}
+
+.duck {
+  position: absolute;
+  top: 224px;
+  right: -140px;
+  width: 343px;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  width: 343px;
+  align-items: start;
+  gap: 8px;
+  margin-top: 32px;
+  position: relative;
+  z-index: 10;
+}
+
+.subtitle {
+  max-width: 315px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1f2937;
+}
+
+.duck-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: fit-content;
+  margin-top: 143px;
+}
+
+.duck-list li {
+  padding-left: 38px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #1f2937;
+  cursor: pointer;
+}
+
+.duck-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background-color: currentColor;
+  mask-image: url("/src/assets/arrow.svg");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .cart-icon:hover {
     content: url(/src/assets/cart-hover.svg);
@@ -182,8 +258,20 @@ li {
     background-color: #439fff;
   }
 
+  .duck-list li:hover {
+    color: #2581eb;
+  }
+
   .menu-list-item:hover {
     color: #2581eb;
+  }
+}
+
+@media (min-width: 500px) {
+  .duck {
+    top: 150px;
+    right: -180px;
+    width: 450px;
   }
 }
 
@@ -207,6 +295,23 @@ li {
   .menu-list {
     margin-bottom: unset;
   }
+
+  .title {
+    font-size: 152px;
+  }
+
+  .duck {
+    top: -50px;
+    right: -245px;
+    width: 577px;
+  }
+
+  .duck-list {
+    flex-direction: row;
+    justify-self: center;
+    gap: 24px;
+    margin-top: 80px;
+  }
 }
 
 @media (min-width: 1280px) {
@@ -227,5 +332,36 @@ li {
 
   .menu-icon {
     display: none;
+  }
+
+  .main {
+    margin-top: 76px;
+  }
+
+  .text-content {
+    display: flex;
+    justify-content: center;
+    gap: 208px;
+  }
+
+  .right {
+    margin-top: 95px;
+  }
+
+  .cta {
+    margin-top: 20px;
+    margin-left: 830px;
+  }
+
+  .duck {
+    top: -40px;
+    right: 51.5%;
+    transform: translateX(50%);
+    width: 668px;
+  }
+
+  .duck-list {
+    gap: 44px;
+    margin-top: 195px;
   }
 }
