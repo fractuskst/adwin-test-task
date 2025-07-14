@@ -11,6 +11,7 @@
 
   --white-color: #fff;
   --black-color: #1e1e1e;
+  --red-color: #ff6c2d;
 }
 
 * {
@@ -61,7 +62,7 @@ li {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out;
-  z-index: 98;
+  z-index: 80;
 }
 
 .overlay.visible {
@@ -123,7 +124,8 @@ li {
 
 .cart-icon,
 .menu-icon,
-.close-icon {
+.menu-close-icon,
+.popup-close-icon {
   cursor: pointer;
 }
 
@@ -139,14 +141,14 @@ li {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
   width: 100%;
   background-color: var(--white-color);
   padding: 32px;
   transform: translateY(-100%);
   transition: transform 0.5s ease-in-out;
-  z-index: 99;
+  z-index: 90;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -167,6 +169,7 @@ li {
   align-self: center;
   align-content: center;
   height: 38px;
+  font-weight: 500;
 }
 
 .menu-list-item a {
@@ -262,6 +265,74 @@ li {
   mask-image: url("/src/assets/arrow.svg");
 }
 
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.popup.open {
+  display: block;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 344px;
+  background: var(--white-color);
+  padding: 20px 16px;
+  border-radius: 20px;
+}
+
+.form-fields-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.popup-close-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.required {
+  color: var(--red-color);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field label {
+  font-weight: 500;
+}
+
+.form-field input {
+  height: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #f1f1f1;
+  border-radius: 14px;
+  padding: 10px 16px;
+  outline: none;
+}
+
+.form-agreement {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.form-agreement a {
+  color: var(--secondary-color);
+}
+
 @media (hover: hover) and (pointer: fine) {
   a:hover {
     color: var(--secondary-color);
@@ -287,8 +358,16 @@ li {
     color: var(--secondary-color);
   }
 
+  .menu-list-item.active a:hover {
+    color: var(--secondary-light-color);
+  }
+
   .duck-list-item:hover {
     color: var(--secondary-color);
+  }
+
+  .form-agreement a:hover {
+    color: var(--secondary-light-color);
   }
 }
 
@@ -400,5 +479,10 @@ li {
   .duck-list {
     gap: 44px;
     margin-top: 195px;
+  }
+
+  .form {
+    width: 417px;
+    padding: 40px;
   }
 }
